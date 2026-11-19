@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineTrip — Voyagez sur les lieux de tournage</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>🎬 CineTrip</h1>
+        <p>Découvrez les lieux de tournage et la météo en temps réel</p>
+
+        <div class="search-wrapper">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Tapez une série (ex: Lupin, Sherlock, Dark...)"
+                    autocomplete="off" required />
+                <button type="submit">Explorer</button>
+            </form>
+            <ul id="autocomplete-list" class="autocomplete-list hidden"></ul>
+        </div>
+
+        <div class="shortcuts">
+            <span>Suggestions :</span>
+            <button type="button" class="shortcut-btn" data-show="Lupin">Lupin</button>
+            <button type="button" class="shortcut-btn" data-show="Sherlock">Sherlock</button>
+            <button type="button" class="shortcut-btn" data-show="Stranger Things">Stranger Things</button>
+            <button type="button" class="shortcut-btn" data-show="La Casa de Papel">La Casa de Papel</button>
+        </div>
+    </header>
+
+    <div id="status-message" class="status hidden"></div>
+
+    <main class="container">
+        <section id="show-card" class="card hidden">
+            <img id="show-poster" src="" alt="Affiche de la série" />
+            <div class="show-details">
+                <h2 id="show-title"></h2>
+                <div class="badges">
+                    <span id="show-country" class="badge"></span>
+                    <span id="show-genres" class="badge secondary"></span>
+                </div>
+                <p id="show-summary"></p>
+            </div>
+        </section>
+
+        <section id="travel-card" class="card hidden">
+            <div class="weather-panel">
+                <h3>📍 Destination : <span id="target-location"></span></h3>
+                <div class="weather-box">
+                    <p id="weather-temp" class="temp"></p>
+                    <p id="weather-advice"></p>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="tvMaze.js"></script>
+    <script src="mapWeather.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
